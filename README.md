@@ -1,3 +1,3 @@
-#TunerFinalProject
+#Music Genre Classifier
 
 dataset URL: https://www.kaggle.com/datasets/purumalgi/music-genre-classification/data
