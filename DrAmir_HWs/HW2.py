@@ -26,9 +26,9 @@ def load_data():
         y: Target array (numpy array)
     """
     # TODO: Load data from diabetes.csv
-    df = None  # Replace with pd.read_csv("diabetes.csv")
-    X = None   # Replace with df.iloc[:, :-1].values
-    y = None   # Replace with df.iloc[:, -1].values
+    df = pd.read_csv("diabetes.csv")  # Replace with pd.read_csv("diabetes.csv")
+    X = df.iloc[:, :-1].values   # Replace with df.iloc[:, :-1].values
+    y = df.iloc[:, -1].values   # Replace with df.iloc[:, -1].values
     
     # Don't print anything here - autograder handles printing
     return X, y
@@ -41,7 +41,7 @@ def split_data(X, y):
         X_train, X_test, y_train, y_test
     """
     # TODO: Split data with test_size=0.3 and random_state=42
-    X_train, X_test, y_train, y_test = None, None, None, None
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
     
     # Don't print anything here - autograder handles printing
     return X_train, X_test, y_train, y_test
@@ -55,8 +55,13 @@ def kmeans_clustering(X):
         labels: Cluster labels for all data points (numpy array)
     """
     # TODO: Implement KMeans with n_clusters=2, random_state=42, n_init=10
-    centers = None
-    labels = None
+    
+# K-Means Clustering
+    kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
+    kmeans.fit(X)
+
+    centers = kmeans.cluster_centers_
+    labels = kmeans.labels_
     
     return centers, labels
 
@@ -68,7 +73,8 @@ def train_svm(X_train, y_train):
         model: Trained SVM model
     """
     # TODO: Train SVM with kernel="linear", random_state=42
-    model = None
+    model = SVC(kernel='linear', random_state=42)
+    model.fit(X_train, y_train)
     
     return model
 
@@ -81,8 +87,8 @@ def evaluate_svm(model, X_test, y_test):
         predictions: Model predictions on test set (numpy array)
     """
     # TODO: Get predictions and calculate accuracy
-    predictions = None
-    accuracy = None
+    predictions = model.predict(X_test)
+    accuracy = accuracy_score(y_test, predictions)
     
     return accuracy, predictions
 
@@ -94,8 +100,8 @@ def train_decision_tree(X_train, y_train):
         model: Trained Decision Tree model
     """
     # TODO: Train Decision Tree with random_state=42
-    model = None
-    
+    model = DecisionTreeClassifier(random_state=42)
+    model.fit(X_train, y_train)
     return model
 
 
@@ -107,8 +113,8 @@ def evaluate_decision_tree(model, X_test, y_test):
         predictions: Model predictions on test set (numpy array)
     """
     # TODO: Get predictions and calculate accuracy
-    predictions = None
-    accuracy = None
+    predictions = model.predict(X_test)
+    accuracy = accuracy_score(y_test, predictions)
     
     return accuracy, predictions
 
