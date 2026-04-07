@@ -25,7 +25,7 @@ def load_data():
     return X,y
 
 def split_data(X, y):
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     #print trainging set here?
 
     print("Data loaded and split.")
@@ -54,7 +54,7 @@ def main():
     svm_acc, svm_preds = evaluate_svm(svm_model, X_test, y_test)
 
     print("SVM_ACCURACY:", round(svm_acc, 4) if svm_acc is not None else None)
-    print("SVM_PRED_SAMPLE:", svm_preds[:10] if svm_preds is not None else None)
+    #print("SVM_PRED_SAMPLE:", svm_preds[:10] if svm_preds is not None else None)
     
 if __name__ == "__main__":
     main()
