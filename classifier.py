@@ -34,6 +34,22 @@ def split_data(X, y):
 
     return X_train, X_test, y_train, y_test
 
+
+def kmeans_clustering(X):
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+# K-Means Clustering
+    kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
+    kmeans.fit(X_scaled)
+    """
+    centers = kmeans.cluster_centers_
+    labels = kmeans.labels_
+    """
+
+    return kmeans.cluster_centers_, kmeans.labels_
+
+
+
 def train_svm(X_train, y_train):
     model = SVC(kernel='linear', random_state=42)
     model.fit(X_train, y_train)
@@ -54,7 +70,27 @@ def main():
     svm_acc, svm_preds = evaluate_svm(svm_model, X_test, y_test)
 
     print("SVM_ACCURACY:", round(svm_acc, 4) if svm_acc is not None else None)
+<<<<<<< HEAD
     #print("SVM_PRED_SAMPLE:", svm_preds[:10] if svm_preds is not None else None)
+=======
+    print("SVM_PRED_SAMPLE:", svm_preds[:10] if svm_preds is not None else None)
+
+    print("\nFinding best k with elbow method...")
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    
+    inertias = []
+    for k in range(1, 11):
+        km = KMeans(n_clusters=k, random_state=42, n_init=10)
+        km.fit(X_scaled)
+        inertias.append(km.inertia_)
+        print(f"k={k}, inertia={km.inertia_:.2f}")
+
+
+    centers, labels = kmeans_clustering(X)
+    print("KMEANS_CENTERS:", centers)
+    print("KMEANS_LABELS_SAMPLE:", labels[:10] if labels is not None else None)
+>>>>>>> d09adc7bb3eaba964a8d0ab7daf1f2ef697b37e7
     
 if __name__ == "__main__":
     main()
