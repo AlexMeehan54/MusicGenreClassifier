@@ -8,5 +8,5 @@ Used top 5 features with variance -> 32%
 Used all encoded features -> ~36%  
 Added depth and other traits to the dt -> ~45%  
 Added the random forest model -> ~50%  
-Increased depth and other traits to the dt -> ~53%  
+Increased depth and other traits to the rf -> ~53%  
 
