@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -19,13 +20,14 @@ def load_data():
     csv_path = base_dir / "csvFiles" / "train.csv"
 
     df = pd.read_csv(csv_path)
-    df = df.drop(columns=['Artist Name', 'Track Name'], errors='ignore')
+    df = df.drop(columns=['Artist Name', 'Track Name','time_signature','tempo','key','mode'], errors='ignore')
 
-    
+    """
     df['duration_in min/ms'] = pd.to_numeric(df['duration_in min/ms'], errors='coerce')
     df['duration_in min/ms'] = df['duration_in min/ms'].apply(
         lambda x: x * 60000 if x < 100 else x
     )
+    """
    
     # Drop rows where the Class label is missing
     df = df.dropna(subset=[df.columns[-1]])
