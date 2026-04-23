@@ -11,6 +11,7 @@ from sklearn.preprocessing import StandardScaler
 
 from sklearn.svm import SVC 
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.cluster import KMeans
 
 from pathlib import Path
 
@@ -21,14 +22,6 @@ def load_data():
     df = pd.read_csv(csv_path)
     df = df.drop(columns=['id','artist', 'name','year'], errors='ignore')
     
-
-    """
-    df['duration_in min/ms'] = pd.to_numeric(df['duration_in min/ms'], errors='coerce')
-    df['duration_in min/ms'] = df['duration_in min/ms'].apply(
-        lambda x: x * 60000 if x < 100 else x
-    )
-    """
-   
     # Drop rows where the Class label is missing
     df = df.dropna(subset=[df.columns[-1]])
 
@@ -38,7 +31,7 @@ def load_data():
     y = df.iloc[:, -1].values
 
     #fills the missing NaN with the average of that column
-    imputer = SimpleImputer(strategy='mean')
+    imputer = SimpleImputer(strategy='median')
     X = imputer.fit_transform(X)
 
     return X, y
@@ -58,6 +51,18 @@ def split_data(X, y):
     return X_train, X_test, y_train, y_test
 
 
+
+def kmeans_clustering(X):
+# K-Means Clustering
+    kmeans = KMeans(n_clusters=5, random_state=42, n_init=10)
+    kmeans.fit(X)
+
+    centers = kmeans.cluster_centers_
+    labels = kmeans.labels_
+    
+    return centers, labels
+
+"""
 def train_svm(X_train, y_train):
     model = SVC(kernel='rbf', random_state=42)
     model.fit(X_train, y_train)
@@ -69,8 +74,10 @@ def evaluate_svm(model, X_test, y_test):
     accuracy = accuracy_score(y_test, predictions)
     
     return accuracy, predictions
+"""
 
 def main():
+    """
     X, y = load_data()
     X_train, X_test, y_train, y_test = split_data(X, y)
 
@@ -80,6 +87,14 @@ def main():
 
     print("SVM_ACCURACY:", round(svm_acc, 4) if svm_acc is not None else None)
     print("SVM_PRED_SAMPLE:", svm_preds[:10] if svm_preds is not None else None)
+    """
+    X, y = load_data()
+    X_train, X_test, y_train, y_test = split_data(X, y)
+    
+    # Test KMeans
+    centers, labels = kmeans_clustering(X)
+    print("KMEANS_CENTERS:", centers)
+    print("KMEANS_LABELS_SAMPLE:", labels[:10] if labels is not None else None)
 
     
 if __name__ == "__main__":

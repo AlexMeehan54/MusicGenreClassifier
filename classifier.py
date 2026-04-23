@@ -38,7 +38,7 @@ def load_data():
     y = df.iloc[:, -1].values
 
     #fills the missing NaN with the average of that column
-    imputer = SimpleImputer(strategy='mean')
+    imputer = SimpleImputer(strategy='median')
     X = imputer.fit_transform(X)
 
     return X, y
