@@ -1,3 +1,4 @@
+# TODO:
 # Changes: Test without class 10 in the last column
 # Make interchangable for feature subsets
 # Make a bar graph of our class variation
