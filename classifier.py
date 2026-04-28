@@ -10,7 +10,10 @@ from sklearn.metrics import accuracy_score
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.inspection import permutation_importance
+<<<<<<< Updated upstream
 from sklearn.model_selection import GridSearchCV
+=======
+>>>>>>> Stashed changes
 
 from sklearn.svm import SVC 
 from sklearn.tree import DecisionTreeClassifier
@@ -60,6 +63,7 @@ def split_data(X, y):
 
 
 def train_svm(X_train, y_train):
+<<<<<<< Updated upstream
 
     params = {
         "C": [0.1, 1, 10, 100],
@@ -91,6 +95,12 @@ def train_svm(X_train, y_train):
     
     return model
 """
+=======
+    model = SVC(kernel='rbf', random_state=42)
+    model.fit(X_train, y_train)
+    
+    return model
+>>>>>>> Stashed changes
 
 def evaluate_svm(model, X_test, y_test):
     predictions = model.predict(X_test)
