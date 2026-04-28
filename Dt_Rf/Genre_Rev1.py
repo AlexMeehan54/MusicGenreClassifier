@@ -1,3 +1,9 @@
+# Changes: Test without class 10 in the last column
+# Make interchangable for feature subsets
+# Make a bar graph of our class variation
+# Visualize both models via chart
+# Make 
+
 # Uses HW3 Decision Tree and import functions
 import pandas as pd
 import numpy as np
@@ -10,6 +16,11 @@ from sklearn.impute import SimpleImputer
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 def load_data(filepath='train.csv'):
     df = pd.read_csv(filepath)
@@ -25,8 +36,16 @@ def load_data(filepath='train.csv'):
     X = df[['Popularity', 'danceability', 'energy', 'key',
               'loudness', 'mode', 'speechiness', 'acousticness',
                 'instrumentalness', 'liveness', 'valence', 'tempo',
-                  'duration_in min/ms', 'time_signature',]]
+                  'duration_in min/ms', 'time_signature']]
     y = df.iloc[:, -1]
+    counts = df['Class'].value_counts().sort_index()
+
+    # Bar Chart
+    plt.bar(counts.index.astype(str), counts.values)
+    plt.xlabel('Class')
+    plt.ylabel('Records')
+    plt.title('Class Summary')
+    plt.show()
     return X, y.values
 
 def split_data(X, y):
@@ -88,6 +107,21 @@ def evaluate(model, X_test, y_test):
     accuracy = accuracy_score(y_test, predictions)
     return accuracy, predictions
 
+def plot_genre_confusion_matrix (model, X_test, y_test, class_names):
+    """
+    Generates and plots a confusion matrix for model evaluation.
+    """
+    # Confusion
+    y_pred = model.predict(X_test)
+    cm = confusion_matrix(y_test, y_pred)
+    fig, ax = plt.subplots(figsize=(12, 12))
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=class_names)
+    disp.plot(cmap=plt.cm.Blues, ax=ax, xticks_rotation=45)
+    plt.title("Confusion Matrix: Predicted vs Actual Genres")
+    # plt.show()
+
+    # Bar chart
+    
 
 def main():
     X, y = load_data()
@@ -103,6 +137,11 @@ def main():
     print("RF_ACCURACY:", round(rf_acc, 4) if rf_acc is not None else None)
     print("RF_PRED_SAMPLE:", rf_preds[:10] if rf_preds is not None else None)
     # Test Gradient Boosting
+
+    feature_cols = X.columns.tolist()
+    unique_classes = [str(c) for c in sorted(set(y))]
+    plot_genre_confusion_matrix(dt_model, X_test, y_test, unique_classes)
+
     """
     gb_model = train_gradient_boosting(X_train, y_train)
     gb_acc, gb_preds = evaluate(gb_model, X_test, y_test)
