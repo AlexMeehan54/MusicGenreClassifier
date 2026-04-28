@@ -1,8 +1,7 @@
 # Changes: Test without class 10 in the last column
 # Make interchangable for feature subsets
 # Make a bar graph of our class variation
-# Visualize both models via chart
-# Make 
+# Visualize both models via chart with SVM (Merge commits)
 
 # Uses HW3 Decision Tree and import functions
 import pandas as pd
