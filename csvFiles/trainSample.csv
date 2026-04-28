@@ -1,7 +1,0 @@
-Artist Name,Track Name,Popularity,danceability,energy,key,loudness,mode,speechiness,acousticness,instrumentalness,liveness,valence,tempo,duration_in min/ms,time_signature,Class
-Bruno Mars,That's What I Like (feat. Gucci Mane),60.0,0.854,0.564,1.0,-4.964,1,0.0485,0.0171,,0.0849,0.899,134.071,234596.0,4,5
-Boston,Hitch a Ride,54.0,0.382,0.814,3.0,-7.23,1,0.0406,0.0011,0.00401,0.101,0.569,116.454,251733.0,4,10
-The Raincoats,No Side to Fall In,35.0,0.434,0.614,6.0,-8.334,1,0.0525,0.486,0.000196,0.394,0.787,147.681,109667.0,4,6
-Deno,Lingo (feat. J.I & Chunkz),66.0,0.853,0.597,10.0,-6.528,0,0.0555,0.0212,,0.122,0.569,107.033,173968.0,4,5
-Red Hot Chili Peppers,Nobody Weird Like Me - Remastered,53.0,0.167,0.975,2.0,-4.279,1,0.216,0.000169,0.0161,0.172,0.0918,199.06,229960.0,4,10
-The Stooges,Search and Destroy - Iggy Pop Mix,53.0,0.235,0.977,6.0,0.878,1,0.107,0.00353,0.00604,0.172,0.241,152.952,208133.0,4,6
