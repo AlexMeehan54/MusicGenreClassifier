@@ -40,11 +40,11 @@ def genre_plot(df):
 
     plt.show()
 
-def technical_features(df):
+def discriptive_features(df):
     tech = [
     'Popularity','danceability','energy','loudness',
     'speechiness','acousticness','instrumentalness',
-    'liveness','valence','tempo','duration_in min/ms'
+    'liveness','valence'
 ]
 
     clean = df[tech].apply(pd.to_numeric, errors='coerce')
@@ -52,26 +52,26 @@ def technical_features(df):
     clean = clean.dropna()
 
     clean.hist(figsize=(10,6))
-    plt.suptitle("Technical Features Distribution")
+    plt.suptitle("Descriptive Features Distribution")
     plt.show()
 
-def categorical_features(df):
-    cat = ['key', 'mode', 'time_signature']
+def technical_features(df):
+    cat = ['key', 'mode', 'time_signature','tempo','duration_in min/ms']
 
     clean = df[cat].apply(pd.to_numeric, errors='coerce')
 
     clean = clean.dropna()
 
     clean.hist(figsize=(10,6))
-    plt.suptitle("Catagoroical Features Distribution")
+    plt.suptitle("Technical Features Distribution")
     plt.show()
 
 def main():
     df = load_data()
 
     genre_plot(df)
+    discriptive_features(df)
     technical_features(df)
-    categorical_features(df)
 
 if __name__ == "__main__":
     main()

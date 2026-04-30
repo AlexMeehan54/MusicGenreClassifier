@@ -150,6 +150,7 @@ def main():
     print("SVM_ACCURACY:", round(svm_acc, 4) if svm_acc is not None else None)
     print("SVM_PRED_SAMPLE:", svm_preds[:10] if svm_preds is not None else None)
 
+    
     feature_names = X.columns
 
     show_tree_importance(dt_model, feature_names)
