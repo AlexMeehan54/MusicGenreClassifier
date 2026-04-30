@@ -5,6 +5,7 @@ from sklearn.metrics import accuracy_score
 
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
+from sklearn.inspection import permutation_importance
 
 # TODO: import required models
 from sklearn.tree import DecisionTreeClassifier
@@ -107,6 +108,23 @@ def evaluate_svm(model, X_test, y_test):
     accuracy = accuracy_score(y_test, predictions)
     return accuracy, predictions
 
+def show_tree_importance(model, feature_names):
+    importances = model.feature_importances_
+    indices = np.argsort(importances)[::-1]
+
+    print("\nFeature Importance (Tree-Based Model):")
+    for i in indices:
+        print(f"{feature_names[i]}: {importances[i]:.4f}")
+
+def show_svm_importance(model, X_test, y_test, feature_names):
+    r = permutation_importance(model, X_test, y_test, n_repeats=5, random_state=42)
+
+    indices = r.importances_mean.argsort()[::-1]
+
+    print("\nFeature Importance (SVM Permutation):")
+    for i in indices:
+        print(f"{feature_names[i]}: {r.importances_mean[i]:.4f}")
+
 def main():
     X, y = load_data()
     X_train, X_test, y_train, y_test = split_data(X, y)
@@ -131,7 +149,12 @@ def main():
     
     print("SVM_ACCURACY:", round(svm_acc, 4) if svm_acc is not None else None)
     print("SVM_PRED_SAMPLE:", svm_preds[:10] if svm_preds is not None else None)
-    
+
+    feature_names = X.columns
+
+    show_tree_importance(dt_model, feature_names)
+    show_tree_importance(rf_model, feature_names)
+    show_svm_importance(svm_model, X_test, y_test, feature_names)
     
 
     models = ['Decision Tree', 'Random Forest', 'SVM']
