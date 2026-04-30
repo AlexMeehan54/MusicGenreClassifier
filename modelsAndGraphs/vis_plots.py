@@ -8,24 +8,36 @@ def load_data():
 def genre_plot(df):
     genre_col = df.columns[-1]
 
+    df = df.copy()
+
+    # convert numeric labels → names
+    df[genre_col] = df[genre_col].map({
+        0: "Acoustic/Folk",
+        1: "Alt Music",
+        2: "Blues",
+        3: "Bollywood",
+        4: "Country",
+        5: "HipHop",
+        6: "Indie Alt",
+        7: "Instrumental",
+        8: "Metal",
+        9: "Pop",
+        10: "Rock"
+    })
+
     counts = df[genre_col].value_counts()
 
     plt.figure(figsize=(10,5))
 
-    plt.bar(
-        counts.index.astype(str),   
-        counts.values,              
-        color="#1DB954",
-        alpha=0.8
-    )
+    plt.bar(counts.index, counts.values)
 
     plt.title("Genre Distribution")
-    plt.xlabel("Genre Name")
+    plt.xlabel("Genre")
     plt.ylabel("Number of Songs")
 
-    plt.xticks(rotation=45, ha='right')
-
+    plt.xticks(rotation=70, ha='right')
     plt.tight_layout()
+
     plt.show()
 
 def technical_features(df):
