@@ -48,8 +48,8 @@ instrumentalness      0.232769
 valence               0.199577
 duration_in min/ms    0.189669
 tempo                 0.159341
-
-
+```
+```
 While executing Genre_FeatureEng.py you should see
 Expected output summary:
 -Printed datashape
@@ -183,8 +183,8 @@ shows distribution of feature spread
 Histogram of technical features
     'key', 'mode', 'time_signature','tempo','duration_in min/ms'
 shows distribution of feature spread
-
-
+```
+```
 While executing models.py you should see:
 -Bar Chart titled "Genre Distribution"
 =======
