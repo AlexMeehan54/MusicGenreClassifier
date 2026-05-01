@@ -9,10 +9,10 @@ MusicGenreClassifier/
 │
 ├── csvFiles/
 │   └── train.csv
-│
-├── Genre_FeatureEng.py
-├── models.py
-└── vis_plots.py
+├── modelsAndGraphs/
+│   └── Genre_FeatureEng.py
+    └── models.py
+    └── vis_plots.py
 
 Environmental setup:
 Libraries:
@@ -47,8 +47,12 @@ valence               0.199577
 duration_in min/ms    0.189669
 tempo                 0.159341
 
+<<<<<<< HEAD
 
 While executing Genre_FeatureEng.py you should see
+=======
+Expected output summary:
+>>>>>>> ebc5a574e80875250060b53193d8b083b79055a4
 -Printed datashape
 -Any Missing Values
 -Duplicate rows
@@ -137,8 +141,12 @@ key: 0.0061
 tempo: 0.0037
 ```
 
+<<<<<<< HEAD
 
 While executing models.py you should see:
+=======
+Expected output summary:
+>>>>>>> ebc5a574e80875250060b53193d8b083b79055a4
 -The accuracy scores of each model (Takes a long time to load with SVM)
 -Visual comparison graph of each model and their accuracy percentages
 -Each feature rated on it importance to each model (Takes a very long time to load with SVM)
@@ -175,8 +183,13 @@ Histogram of technical features
 shows distribution of feature spread
 
 
+<<<<<<< HEAD
 While executing models.py you should see:
 -Bar Chart titled "Genre Distribution"
+=======
+Expexted output summary:
+-Bar Chart titled "Genre Distritubtion"
+>>>>>>> ebc5a574e80875250060b53193d8b083b79055a4
 -Histograms titled "Descriptive Features Distribution" and "Technical Features Distribution"
 ```
 
