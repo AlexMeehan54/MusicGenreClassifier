@@ -2,6 +2,7 @@
 
 dataset URL: https://www.kaggle.com/datasets/purumalgi/music-genre-classification/data
 
+<<<<<<< HEAD
 Reproducibility
 ```
 Files:
@@ -47,7 +48,6 @@ valence               0.199577
 duration_in min/ms    0.189669
 tempo                 0.159341
 
-<<<<<<< HEAD
 
 While executing Genre_FeatureEng.py you should see
 =======
@@ -60,7 +60,7 @@ Expected output summary:
 -Top 7 PC1 features
 ```
 
-
+<<<<<<< HEAD
 models.py
 __________________________________________
 Music genre classification system using three machine learning models:
@@ -141,7 +141,7 @@ key: 0.0061
 tempo: 0.0037
 ```
 
-<<<<<<< HEAD
+
 
 While executing models.py you should see:
 =======
@@ -151,7 +151,7 @@ Expected output summary:
 -Each feature rated on it importance to each model (Takes a very long time to load with SVM)
 ```
 
-
+<<<<<<< HEAD
 vis_plots.py
 __________________________________________
 Genre distribution chart
