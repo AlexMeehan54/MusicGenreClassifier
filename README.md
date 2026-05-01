@@ -2,7 +2,7 @@
 
 dataset URL: https://www.kaggle.com/datasets/purumalgi/music-genre-classification/data
 
-Reproducability
+Reproducibility
 ```
 Files:
 MusicGenreClassifier/
@@ -14,24 +14,28 @@ MusicGenreClassifier/
 ├── models.py
 └── vis_plots.py
 
-Enviromental setup: 
+Environmental setup:
 Libraries:
-pandas - 3.0.0
-numpy - 2.4.2
-matplotlib - 3.10.8
-scikit-learn - 1.8.0
+pandas - 3.0.0 - Load CSV files, Clean and filter data,
+numpy - 2.4.2 - Computes the math
+matplotlib - 3.10.8 - Plot models, Bar charts and histograms
+scikit-learn - 1.8.0 - Train models, Split data, preprocessing and feature scaling, evaluates accuracy
 
 Genre_FeatureEng.py
 __________________________________________
 This is utilized to load our dataset's statistics and verify that our set is clean before modeling.
 
+
 DATA EXPLORATION notably loads the data set, checks the first 5 rows and produces a summary of the statistics.
 DATA EXPLORATION notes the amount of missing values (6819) in the features
 
+
 DATA CLEANING checked for any duplicate rows (0)
+
 
 Z-SCORE STANDARDIZATION scales the data for the PCA RESULTS
 Means approx. 0 and Std approx. 1 after scaling
+
 
 PCA RESULTS analysis on scaled data
 INTERPRETATION displays the top 7 features for PC1
@@ -43,6 +47,7 @@ valence               0.199577
 duration_in min/ms    0.189669
 tempo                 0.159341
 
+
 While executing Genre_FeatureEng.py you should see
 -Printed datashape
 -Any Missing Values
@@ -51,29 +56,37 @@ While executing Genre_FeatureEng.py you should see
 -Top 7 PC1 features
 ```
 
+
 models.py
 __________________________________________
 Music genre classification system using three machine learning models:
-Models	        Key Parameters
--Decision Tree	max_depth=6, min_samples_split=10, min_samples_leaf=5
--Random Forest	n_estimators=500, max_depth=12, max_features='sqrt'
--SVM (RBF)	    kernel='rbf'
+Models          Key Parameters
+-Decision Tree  max_depth=6, min_samples_split=10, min_samples_leaf=5
+-Random Forest  n_estimators=500, max_depth=12, max_features='sqrt'
+-SVM (RBF)      kernel='rbf'
+
 
 Preprocessing
 -Drops non-numeric columns (Artist Name, Track Name)
 -Removes rows with missing genre labels
 
+
 Split/Test
-Standarization is required for SVM
+Standardization is required for SVM
 70% training / 30% testing
 random_state = 42
+
 
 Missing values are replaced with the mean of their column using SimpleImputer
 Features are scaled using StandardScaler (Important to SVM)
 
+
 imports permutation_importance from sklearn for feature importance
 separate importance loaders for the tree models and SVM.
+-Both of the tree models run through the function show_tree_importance while SVM runs through show_svm_importance
 Results of feature importance:
+
+
 ```
 Feature Importance (Tree-Based Model):
 duration_in min/ms: 0.1942
@@ -124,11 +137,13 @@ key: 0.0061
 tempo: 0.0037
 ```
 
+
 While executing models.py you should see:
 -The accuracy scores of each model (Takes a long time to load with SVM)
--Visual comparision graph of each model and their accuracy precentages
+-Visual comparison graph of each model and their accuracy percentages
 -Each feature rated on it importance to each model (Takes a very long time to load with SVM)
 ```
+
 
 vis_plots.py
 __________________________________________
@@ -148,18 +163,22 @@ converts numeric genre labels (0-10) into readable genre names
 Counts how many songs belong to each genre
 Displays a bar graph of how many songs are in each genre
 
-Hisogram of descriptive features
+
+Histogram of descriptive features
     'Popularity','danceability','energy','loudness',
     'speechiness','acousticness','instrumentalness',
     'liveness','valence'
 shows distribution of feature spread
 
-Hisogram of technical features
+Histogram of technical features
     'key', 'mode', 'time_signature','tempo','duration_in min/ms'
 shows distribution of feature spread
 
 
 While executing models.py you should see:
--Bar Chart titled "Genre Distritubtion"
+-Bar Chart titled "Genre Distribution"
 -Histograms titled "Descriptive Features Distribution" and "Technical Features Distribution"
 ```
+
+
+
