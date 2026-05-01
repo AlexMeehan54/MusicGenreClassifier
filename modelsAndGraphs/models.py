@@ -7,7 +7,6 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.inspection import permutation_importance
 
-# TODO: import required models
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
@@ -16,18 +15,13 @@ import matplotlib.pyplot as plt
 
 def load_data(filepath='csvFiles/train.csv'):
     df = pd.read_csv(filepath)
-    # Drop nominal data
     df = df.drop(columns=['Artist Name', 'Track Name'], errors='ignore')
-   
-    # Drop rows where the Class label is missing
     df = df.dropna(subset=[df.columns[-1]])
-
     X = df.iloc[:, :-1].apply(pd.to_numeric, errors='coerce')
     y = df.iloc[:, -1]
     return X, y
 
 def split_data(X, y):
-    # Split data with test_size=0.2 and random_state=42
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
     #fills the missing NaN with the average of that column
@@ -42,14 +36,8 @@ def split_data(X, y):
 
     return X_train, X_test, y_train, y_test
 
-#Model Training
+# Model Training
 def train_decision_tree(X_train, y_train):
-    """
-    Train a Decision Tree classifier.
-    Returns:
-        model: Trained Decision Tree model
-    """
-    # TODO: Train Decision Tree with random_state=42
     model = DecisionTreeClassifier(
         random_state=42,
         max_depth=6,
@@ -92,13 +80,6 @@ def train_svm(X_train, y_train):
 
 # Model evaluation
 def evaluate(model, X_test, y_test):
-    """
-    Evaluate the Decision Tree model.
-    Returns:
-        accuracy: Model accuracy (float)
-        predictions: Model predictions on test set (numpy array)
-    """
-    # TODO: Get predictions and calculate accuracy
     predictions = model.predict(X_test)
     accuracy = accuracy_score(y_test, predictions)
     return accuracy, predictions
@@ -156,7 +137,6 @@ def main():
     show_tree_importance(dt_model, feature_names)
     show_tree_importance(rf_model, feature_names)
     show_svm_importance(svm_model, X_test, y_test, feature_names)
-    
 
     models = ['Decision Tree', 'Random Forest', 'SVM']
     accuracies = [dt_acc, rf_acc, svm_acc]
