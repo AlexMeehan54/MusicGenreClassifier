@@ -117,7 +117,7 @@ print(f"\nPC1+PC2 explain {pca_2d.explained_variance_ratio_.sum():.3f} ({pca_2d.
 
 print("\n=== 6. INTERPRETATION ===")
 
-# TODO: Create loadings DataFrame
+# Create loadings DataFrame
 loadings = pd.DataFrame(
     pca_2d.components_.T,
     columns=['PC1', 'PC2'],
