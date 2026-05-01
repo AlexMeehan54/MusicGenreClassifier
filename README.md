@@ -140,10 +140,10 @@ mode: 0.0092
 time_signature: 0.0065
 key: 0.0061
 tempo: 0.0037
+```
 
 
-
-
+```
 While executing models.py you should see:
 =======
 Expected output summary:
@@ -185,7 +185,6 @@ Histogram of technical features
 shows distribution of feature spread
 
 
-<<<<<<< HEAD
 While executing models.py you should see:
 -Bar Chart titled "Genre Distribution"
 =======
