@@ -3,7 +3,6 @@
 dataset URL: https://www.kaggle.com/datasets/purumalgi/music-genre-classification/data
 
 Reproducability
-<pre>
 ```
 Files:
 MusicGenreClassifier/
@@ -22,7 +21,8 @@ numpy - 2.4.2
 matplotlib - 3.10.8
 scikit-learn - 1.8.0
 
-Genre_FeatureEng.py:
+Genre_FeatureEng.py
+__________________________________________
 This is utilized to load our dataset's statistics and verify that our set is clean before modeling.
 
 DATA EXPLORATION notably loads the data set, checks the first 5 rows and produces a summary of the statistics.
@@ -52,7 +52,7 @@ While executing Genre_FeatureEng.py you should see
 ```
 
 models.py
-```
+__________________________________________
 Music genre classification system using three machine learning models:
 Models	        Key Parameters
 -Decision Tree	max_depth=6, min_samples_split=10, min_samples_leaf=5
@@ -131,7 +131,7 @@ While executing models.py you should see:
 ```
 
 vis_plots.py
-```
+__________________________________________
 Genre distribution chart
 converts numeric genre labels (0-10) into readable genre names
     0: "Acoustic/Folk",
@@ -163,17 +163,3 @@ While executing models.py you should see:
 -Bar Chart titled "Genre Distritubtion"
 -Histograms titled "Descriptive Features Distribution" and "Technical Features Distribution"
 ```
-<pre>
-
-
-Reproducibility
-Project Structure
-
-MusicGenreClassifier/
-│
-├── csvFiles/
-│   └── train.csv
-│
-├── Genre_FeatureEng.py
-├── models.py
-└── vis_plots.py
