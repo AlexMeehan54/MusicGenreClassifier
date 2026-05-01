@@ -166,3 +166,14 @@ While executing models.py you should see:
 <pre>
 
 
+Reproducibility
+Project Structure
+
+MusicGenreClassifier/
+│
+├── csvFiles/
+│   └── train.csv
+│
+├── Genre_FeatureEng.py
+├── models.py
+└── vis_plots.py
