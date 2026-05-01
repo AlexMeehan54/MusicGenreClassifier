@@ -146,7 +146,6 @@ tempo: 0.0037
 While executing models.py you should see:
 =======
 Expected output summary:
->>>>>>> ebc5a574e80875250060b53193d8b083b79055a4
 -The accuracy scores of each model (Takes a long time to load with SVM)
 -Visual comparison graph of each model and their accuracy percentages
 -Each feature rated on it importance to each model (Takes a very long time to load with SVM)
@@ -189,7 +188,6 @@ While executing models.py you should see:
 =======
 Expexted output summary:
 -Bar Chart titled "Genre Distritubtion"
->>>>>>> ebc5a574e80875250060b53193d8b083b79055a4
 -Histograms titled "Descriptive Features Distribution" and "Technical Features Distribution"
 ```
 
