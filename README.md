@@ -2,8 +2,8 @@
 
 dataset URL: https://www.kaggle.com/datasets/purumalgi/music-genre-classification/data
 
-<<<<<<< HEAD
 Reproducibility
+=======
 ```
 Files:
 MusicGenreClassifier/
@@ -21,9 +21,10 @@ pandas - 3.0.0 - Load CSV files, Clean and filter data,
 numpy - 2.4.2 - Computes the math
 matplotlib - 3.10.8 - Plot models, Bar charts and histograms
 scikit-learn - 1.8.0 - Train models, Split data, preprocessing and feature scaling, evaluates accuracy
-
+```
 Genre_FeatureEng.py
-__________________________________________
+=======
+```
 This is utilized to load our dataset's statistics and verify that our set is clean before modeling.
 
 
@@ -50,9 +51,7 @@ tempo                 0.159341
 
 
 While executing Genre_FeatureEng.py you should see
-=======
 Expected output summary:
->>>>>>> ebc5a574e80875250060b53193d8b083b79055a4
 -Printed datashape
 -Any Missing Values
 -Duplicate rows
@@ -60,9 +59,10 @@ Expected output summary:
 -Top 7 PC1 features
 ```
 
-<<<<<<< HEAD
 models.py
+=======
 __________________________________________
+```
 Music genre classification system using three machine learning models:
 Models          Key Parameters
 -Decision Tree  max_depth=6, min_samples_split=10, min_samples_leaf=5
@@ -91,6 +91,7 @@ separate importance loaders for the tree models and SVM.
 Results of feature importance:
 
 
+```
 ```
 Feature Importance (Tree-Based Model):
 duration_in min/ms: 0.1942
@@ -139,7 +140,7 @@ mode: 0.0092
 time_signature: 0.0065
 key: 0.0061
 tempo: 0.0037
-```
+
 
 
 
@@ -151,9 +152,11 @@ Expected output summary:
 -Each feature rated on it importance to each model (Takes a very long time to load with SVM)
 ```
 
-<<<<<<< HEAD
+
 vis_plots.py
+=======
 __________________________________________
+```
 Genre distribution chart
 converts numeric genre labels (0-10) into readable genre names
     0: "Acoustic/Folk",
